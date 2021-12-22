@@ -2,10 +2,12 @@ const express = require("express");
 const routes = express.Router();
 const TweetController = require("../controller/TweetController");
 
-routes.get("/tweets", async (req, res) => {
+routes.get("/tweets/:hashtag", async (req, res) => {
     try {
 
-        const response = await TweetController.fetchTweets();
+        let hashtag = req.params.hashtag;
+
+        const response = await TweetController.fetchTweets(hashtag);
 
         return res.status(200).json(response);
     } catch (error) {

@@ -5,12 +5,16 @@ const MainContainer = styled.div`
     justify-content: center;
     align-items: center;
 
-    padding: 45px 80px 45px 80px;
+    padding: 45px 40px 45px 40px;
+
+    .handler-div {
+        margin-top: 25vh;
+    }
 
     .container-wrapper {
         width: 40%;
         padding: 10px;
-        border: 1px solid black;
+        border: 1px solid #1DA1F2;
         border-radius: 8px;
     }
 
@@ -26,11 +30,38 @@ const Container = styled.div`
     justify-content: flex-end;
 
     ${props =>
+        props.bottom &&
+        css`
+        justify-content: space-between;
+    `};
+
+    ${props =>
         props.middle &&
         css`
       justify-content: center;
-      height: 300px;
+      height: 400px;
       padding: 8px 0 8px 0;
+      overflow: auto;
+
+      margin: 3vh 0 3vh 0;
+      
+      ::-webkit-scrollbar {
+        width: 20px;
+      }
+
+      ::-webkit-scrollbar-track {
+         box-shadow: inset 0 0 5px grey; 
+         border-radius: 10px;
+      }
+ 
+      ::-webkit-scrollbar-thumb {
+         background: #1DA1F2; 
+         border-radius: 10px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+         background: #1DA1F2; 
+       }
     `};
 `
 

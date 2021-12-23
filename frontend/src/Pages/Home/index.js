@@ -9,7 +9,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 export default function Home() {
     const [tweets, setTweets] = useState([]);
-    const [hashtag, setHashtag] = useState("BolsonaroReeleito2022");
+    const [hashtag, setHashtag] = useState("Porto");
     const [next_page, setNextPage] = useState("default");
     const [isLoading, setIsLoading] = useState(true);
     const [hasError, setHasError] = useState(false);
@@ -41,8 +41,6 @@ export default function Home() {
             console.log("REQUEST_ERROR", error);
         }
     }
-
-    console.log("TWEETS", tweets);
 
     return (
         <MainContainer>

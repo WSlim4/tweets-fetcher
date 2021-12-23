@@ -60,7 +60,7 @@ export default function Home() {
                             tweets &&
                             tweets.length == 0 && (
                                 <div className="handler-div">
-                                    <Typography style={{ color: "#14171A" }}>Nenhum tweet encontrado</Typography>
+                                    <Typography style={{ color: "#14171A" }}>Nenhum tweet disponível</Typography>
                                 </div>
                             )}
 
@@ -75,12 +75,15 @@ export default function Home() {
                             tweets &&
                             tweets.length &&
                             tweets.length > 0) &&
-                            tweets.map((tweet) => (
+                            tweets.map((tweet, i) => (
                                 <TweetCard key={tweet.id}
                                     text={tweet.text}
                                     img_url={tweet.user.profile_image_url}
                                     username={tweet.user.username}
                                     datetime={tweet.created_at}
+                                    tweets={tweets}
+                                    setTweets={setTweets}
+                                    index={i}
                                 />
                             ))}
 

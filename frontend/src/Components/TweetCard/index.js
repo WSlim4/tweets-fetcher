@@ -3,8 +3,20 @@ import { formatDatetime } from "../../Helpers/Utils";
 import IconButton from "@mui/material/IconButton";
 import { Container } from "./styles";
 import { Check, Clear } from '@mui/icons-material';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-export default function TweetCard({ username, text, img_url, datetime }) {
+export default function TweetCard({ index, tweets, setTweets, username, text, img_url, datetime }) {
+
+    const handleTweet = (situation) => {
+        let _tweets = [...tweets];
+        _tweets.splice(index, 1);
+        setTweets(_tweets);
+
+        if (situation === "aprovado") {
+            toast("Tweet aprovado!")
+        }
+    }
 
     return (
         <Container>
@@ -20,13 +32,23 @@ export default function TweetCard({ username, text, img_url, datetime }) {
                 </p>
                 <div className="bottom-card-box">
                     <div className="button-group">
-                        <IconButton>
+                        <IconButton onClick={() => handleTweet("aprovado")}>
                             <Check style={{ color: "green" }} />
                         </IconButton>
-                        <IconButton>
+                        <IconButton onClick={() => handleTweet("reprovado")}>
                             <Clear style={{ color: "red" }} />
                         </IconButton>
                     </div>
+                    <ToastContainer
+                        position="bottom-center"
+                        autoClose={2000}
+                        progressStyle={{ color: "lightgreen" }}
+                        toastStyle={{ backgroundColor: "lightgreen", color: "black" }}
+                        hideProgressBar={true}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnHover={false}
+                    />
                 </div>
 
             </div>

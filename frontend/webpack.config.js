@@ -17,6 +17,13 @@ module.exports = {
                     loader: 'babel-loader'
                 }
             },
+            {
+                test: /\.(sa|sc|c)ss$/,
+                use: [
+                    "style-loader",
+                    "css-loader"
+                ],
+            },
         ]
     },
     plugins: [new HtmlWebpackPlugin({ template: './public/index.html' })],

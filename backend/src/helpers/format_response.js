@@ -3,7 +3,7 @@ const formatResponse = ({ data: tweets, includes: { users }, meta }) => {
     // retorno: { array, ...objeto }
 
     tweets.forEach(tweet => {
-        let user = users.filter(user => user.id == tweet.author_id);
+        let user = users.filter(user => user.id == tweet.author_id)[0];
         tweet.user = user
     });
 

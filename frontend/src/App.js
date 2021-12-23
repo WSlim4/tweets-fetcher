@@ -1,10 +1,6 @@
 import React from "react"
+import Home from "./Pages/Home";
 
-function App() {
-    return (<div>
-        <h2>Welcome to React App</h2>
-        <h3>Date : {new Date().toDateString()}</h3>
-    </div>)
+export default function App() {
+    return <Home />
 }
-
-export default App

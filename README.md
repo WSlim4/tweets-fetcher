@@ -12,6 +12,9 @@
 - Na pasta backend, utilize o comando **npm run dev**
 - Na pasta frontend, utilize o comando **yarn start**
 
+- Agora basta acessar **http://localhost:3000**
+- O backend está rodando na porta **3333**
+
 # Observações
 
 - O projeto utiliza a última versão do **webpack**, pode ser que seja necessário instalar essa dependência globalmente em casos de erro.

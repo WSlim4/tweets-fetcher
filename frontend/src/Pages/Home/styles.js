@@ -35,6 +35,17 @@ const Container = styled.div`
         justify-content: space-between;
     `};
 
+    .twitter-logo-box {
+        width: 8vh;
+        height: 8vh;
+
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+        }
+    }
+
     ${props =>
         props.middle &&
         css`

@@ -6,27 +6,38 @@ import TweetCard from "../../Components/TweetCard";
 import Pagination from "../../Components/Pagination";
 import TweetsService from "../../Services/TweetsService";
 import CircularProgress from '@mui/material/CircularProgress';
+import Retry from "../../Components/Retry";
 
 export default function Home() {
     const [tweets, setTweets] = useState([]);
     const [hashtag, setHashtag] = useState("Porto");
-    const [next_page, setNextPage] = useState("default");
+    const [current_page, setCurrentPage] = useState("default");
+    const [next_page, setNextPage] = useState("");
+    const [pages, setPages] = useState(["default"]);
     const [isLoading, setIsLoading] = useState(true);
     const [hasError, setHasError] = useState(false);
 
-    useEffect(() => {
-        fetchData();
-    }, []);
+    useEffect(async () => {
+        await fetchData(current_page);
+    }, [current_page]);
 
-    const fetchData = async () => {
+    const fetchData = async (page) => {
         try {
             if (hashtag === "" || hashtag.includes("#")) {
                 return;
             }
+
             setTweets([]);
             setIsLoading(true);
             setHasError(false);
-            const response = await TweetsService.fetchTweets(hashtag, next_page);
+
+            const response = await TweetsService.fetchTweets(hashtag, page);
+
+            if (response.data.next_token) {
+                setNextPage(response.data.next_token)
+            } else {
+                setNextPage("none")
+            }
 
             if (response.data.tweets) {
                 setTweets(response.data.tweets);
@@ -45,7 +56,11 @@ export default function Home() {
     return (
         <MainContainer>
             <div className="container-wrapper">
-                <Container>
+                <Container bottom>
+                    <div className="twitter-logo-box">
+                        <img src="https://t.ctcdn.com.br/uoFbikmqs4uzBJty4J99HwX-InM=/400x400/smart/i489929.jpeg" />
+                    </div>
+
                     <InputText
                         hashtag={hashtag}
                         setHashtag={setHashtag}
@@ -54,6 +69,12 @@ export default function Home() {
                 </Container>
                 <Container middle>
                     <div>
+                        {isLoading === false && hasError === true && (
+                            <div className="handler-div">
+                                <Retry retryFunc={fetchData} />
+                            </div>
+                        )}
+
                         {
                             isLoading === false &&
                             hasError === false &&
@@ -90,7 +111,15 @@ export default function Home() {
                     </div>
                 </Container>
                 <Container bottom>
-                    <Pagination />
+                    <Pagination
+                        isLoading={isLoading}
+                        hasError={hasError}
+                        setPages={setPages}
+                        pages={pages}
+                        current_page={current_page}
+                        next_page={next_page}
+                        setCurrentPage={setCurrentPage}
+                    />
                 </Container>
             </div>
         </MainContainer>

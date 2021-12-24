@@ -38,11 +38,11 @@ const Container = styled.div`
         .img-box {
             width: 8vh;
             height: 8vh;
-            border-radius: 50%;
-
+            
             img {
                 width: 100%;
                 height: auto;
+                border-radius: 50%;
             }
         }
     }

@@ -23,7 +23,7 @@ export default function InputText({ hashtag, setHashtag, fetchData }) {
                 startAdornment: <InputAdornment position="start">#</InputAdornment>,
                 endAdornment: (
                     <InputAdornment>
-                        <IconButton onClick={() => fetchData()} >
+                        <IconButton onClick={() => fetchData("default")} >
                             <SearchIcon />
                         </IconButton>
                     </InputAdornment>

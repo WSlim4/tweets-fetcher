@@ -11,7 +11,7 @@ class TweetsService {
             const params = {
                 'query': '#' + hashtag,
                 'expansions': 'author_id',
-                'tweet.fields': 'created_at,source',
+                'tweet.fields': 'created_at',
                 'user.fields': 'name,profile_image_url'
             }
 

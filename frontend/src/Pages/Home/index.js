@@ -77,8 +77,7 @@ export default function Home() {
                             </div>
                         )}
 
-                        {
-                            isLoading === false &&
+                        {isLoading === false &&
                             hasError === false &&
                             tweets &&
                             tweets.length == 0 && (

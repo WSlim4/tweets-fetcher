@@ -28,7 +28,6 @@ export default function Button({ isLoading, hasError, pages, setPages, current_p
             </IconButton>
             <IconButton
                 disabled={
-                    next_page === "none" ||
                     next_page === "" ||
                     hasError ||
                     isLoading

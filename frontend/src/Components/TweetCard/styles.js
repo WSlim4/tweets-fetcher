@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-    padding: 8px;
+    padding: 0px;
     display: flex;
     align-items: center;
 
@@ -17,7 +17,7 @@ const Container = styled.div`
         font-size: 0.8em;
 
         .text {
-            width: 100%;
+            padding-bottom: 8px;
             text-align: left;
         }
 

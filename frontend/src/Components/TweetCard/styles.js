@@ -6,6 +6,9 @@ const Container = styled.div`
     align-items: center;
 
     .card-box {
+        padding: 6px;
+        font-size: 0.8em;
+
         h3, p {
             color: #657786;
 
@@ -13,9 +16,7 @@ const Container = styled.div`
                 color: #14171A;
             }
         }
-        padding: 6px;
-        font-size: 0.8em;
-
+        
         .text {
             padding-bottom: 8px;
             text-align: left;

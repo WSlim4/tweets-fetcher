@@ -4,12 +4,11 @@ import { ToastContainer } from 'react-toastify';
 import { setTweets, decrement } from "../../Infraestrutura/Tweets/tweetSlice";
 
 import { MainContainer, Container } from "./styles";
-import Typography from "@mui/material/Typography";
+import { Typography, CircularProgress } from "@mui/material";
 import InputText from "../../Components/Input";
 import TweetCard from "../../Components/TweetCard";
 import Pagination from "../../Components/Pagination";
 import TweetsService from "../../Services/TweetsService";
-import CircularProgress from '@mui/material/CircularProgress';
 import Retry from "../../Components/Retry";
 
 export default function Home() {

@@ -1,21 +1,11 @@
 import React from "react";
-import { toast } from 'react-toastify';
 import { formatDatetime } from "../../Helpers/Utils";
 import { Check, Clear } from '@mui/icons-material';
 import { Container } from "./styles";
 import IconButton from "@mui/material/IconButton";
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function TweetCard({ setTweets, username, text, img_url, datetime }) {
-
-    const handleTweet = (situation) => {
-
-        setTweets();
-
-        if (situation === "aprovado") {
-            toast("Tweet aprovado!")
-        }
-    }
+export default function TweetCard({ index, setTweets, username, text, img_url, datetime }) {
 
     return (
         <Container>
@@ -31,10 +21,10 @@ export default function TweetCard({ setTweets, username, text, img_url, datetime
                 </div>
                 <div className="bottom-card-box">
                     <div className="button-group">
-                        <IconButton onClick={() => handleTweet("aprovado")}>
+                        <IconButton onClick={() => setTweets(index, "aprovado")}>
                             <Check style={{ color: "green" }} />
                         </IconButton>
-                        <IconButton onClick={() => handleTweet("reprovado")}>
+                        <IconButton onClick={() => setTweets(index, "reprovado")}>
                             <Clear style={{ color: "red" }} />
                         </IconButton>
                     </div>

@@ -3,10 +3,14 @@ import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import { TextField, IconButton, InputAdornment } from '@mui/material';
 
-export default function InputText({ hashtag, setHashtag, fetchData }) {
+export default function InputText({ hashtag, setHashtag, fetchData, setCurrentPage }) {
     const onValueChange = (e) => {
         const value = e.target.value;
         setHashtag(value);
+    }
+    const handleSearch = () => {
+        setCurrentPage("default");
+        fetchData("default")
     }
     return (
         <TextField
@@ -23,7 +27,7 @@ export default function InputText({ hashtag, setHashtag, fetchData }) {
                 startAdornment: <InputAdornment position="start">#</InputAdornment>,
                 endAdornment: (
                     <InputAdornment>
-                        <IconButton onClick={() => fetchData("default")} >
+                        <IconButton onClick={() => handleSearch()} >
                             <SearchIcon />
                         </IconButton>
                     </InputAdornment>

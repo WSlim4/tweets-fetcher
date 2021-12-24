@@ -9,12 +9,12 @@ export const tweetSlice = createSlice({
         setTweets: (state, action) => {
             state.value = action.payload;
         },
-        decrement: (state, action) => {
+        approveTweet: (state, action) => {
             state.value = state.value.filter((item, i) => i !== action.payload);
         }
     },
 })
 
-export const { setTweets, decrement } = tweetSlice.actions
+export const { setTweets, approveTweet } = tweetSlice.actions
 
 export default tweetSlice.reducer

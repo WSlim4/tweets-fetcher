@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from 'react-redux'
-import { ToastContainer } from 'react-toastify';
-import { setTweets, decrement } from "../../Infraestrutura/Tweets/tweetSlice";
+import { ToastContainer, toast } from 'react-toastify';
+import { setTweets, approveTweet } from "../../Infraestrutura/Tweets/tweetSlice";
 
 import { MainContainer, Container } from "./styles";
 import { Typography, CircularProgress } from "@mui/material";
@@ -32,7 +32,7 @@ export default function Home() {
                 return;
             }
 
-            dispatch(setTweets([]))
+            dispatch(setTweets([]));
             setIsLoading(true);
             setHasError(false);
 
@@ -58,6 +58,15 @@ export default function Home() {
         }
     }, [hashtag]);
 
+    const handleApprove = useCallback((index, situation) => {
+        dispatch(approveTweet(index));
+
+        if (situation === "aprovado") {
+            toast("Tweet aprovado!")
+        }
+
+    }, [hashtag]);
+
     return (
         <MainContainer>
             <div className="container-wrapper">
@@ -71,6 +80,7 @@ export default function Home() {
                     <InputText
                         hashtag={hashtag}
                         setHashtag={setHashtag}
+                        setCurrentPage={setCurrentPage}
                         fetchData={fetchData}
                     />
                 </Container>
@@ -109,7 +119,8 @@ export default function Home() {
                                     img_url={tweet.user.profile_image_url}
                                     username={tweet.user.username}
                                     datetime={tweet.created_at}
-                                    setTweets={() => dispatch(decrement(i))}
+                                    index={i}
+                                    setTweets={handleApprove}
                                 />
                             ))}
                     </div>

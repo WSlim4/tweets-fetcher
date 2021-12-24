@@ -55,7 +55,7 @@ const Container = styled.div`
     }
 
     ${props =>
-        props.bottom &&
+        props.default &&
         css`
         justify-content: space-between;
     `};

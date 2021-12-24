@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from 'react-redux'
+import { ToastContainer } from 'react-toastify';
 import { setTweets, decrement } from "../../Infraestrutura/Tweets/tweetSlice";
+
+import { MainContainer, Container } from "./styles";
 import Typography from "@mui/material/Typography";
 import InputText from "../../Components/Input";
 import TweetCard from "../../Components/TweetCard";
@@ -8,8 +11,6 @@ import Pagination from "../../Components/Pagination";
 import TweetsService from "../../Services/TweetsService";
 import CircularProgress from '@mui/material/CircularProgress';
 import Retry from "../../Components/Retry";
-import { MainContainer, Container } from "./styles";
-import { ToastContainer } from 'react-toastify';
 
 export default function Home() {
     const tweets = useSelector((state) => state.tweet.value)
@@ -61,7 +62,7 @@ export default function Home() {
     return (
         <MainContainer>
             <div className="container-wrapper">
-                <Container bottom>
+                <Container default>
                     <div className="twitter-logo-box">
                         <a href="https://twitter.com/explore/tabs/trending" target="_blank">
                             <img src="https://t.ctcdn.com.br/uoFbikmqs4uzBJty4J99HwX-InM=/400x400/smart/i489929.jpeg" />
@@ -116,7 +117,7 @@ export default function Home() {
                             ))}
                     </div>
                 </Container>
-                <Container bottom>
+                <Container default>
                     <Pagination
                         isLoading={isLoading}
                         hasError={hasError}

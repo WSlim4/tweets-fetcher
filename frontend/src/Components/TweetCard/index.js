@@ -1,9 +1,9 @@
 import React from "react";
+import { toast } from 'react-toastify';
 import { formatDatetime } from "../../Helpers/Utils";
 import IconButton from "@mui/material/IconButton";
 import { Container } from "./styles";
 import { Check, Clear } from '@mui/icons-material';
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function TweetCard({ index, tweets, setTweets, username, text, img_url, datetime }) {

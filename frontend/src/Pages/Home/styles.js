@@ -5,14 +5,14 @@ const MainContainer = styled.div`
     justify-content: center;
     align-items: center;
 
-    padding: 45px 40px 45px 40px;
+    padding: 45px 20px 45px 20px;
 
     .handler-div {
         margin-top: 25vh;
     }
 
     .container-wrapper {
-        width: 40%;
+        width: 60%;
         padding: 10px;
         border: 1px solid #1DA1F2;
         border-radius: 8px;

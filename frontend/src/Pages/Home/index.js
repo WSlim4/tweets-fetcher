@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { MainContainer, Container } from "./styles";
 import Typography from "@mui/material/Typography";
 import InputText from "../../Components/Input";
@@ -21,7 +21,7 @@ export default function Home() {
         fetchData(current_page);
     }, [current_page]);
 
-    const fetchData = async (page) => {
+    const fetchData = useCallback(async (page) => {
         try {
             if (hashtag === "" || hashtag.includes("#")) {
                 return;
@@ -51,7 +51,7 @@ export default function Home() {
             setHasError(true);
             console.log("REQUEST_ERROR", error);
         }
-    }
+    }, [hashtag]);
 
     return (
         <MainContainer>

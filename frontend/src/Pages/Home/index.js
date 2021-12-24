@@ -58,14 +58,13 @@ export default function Home() {
         }
     }, [hashtag]);
 
-    const handleApprove = useCallback((index, situation) => {
+    const handleApprove = (index, situation) => {
         dispatch(approveTweet(index));
 
         if (situation === "aprovado") {
             toast("Tweet aprovado!")
         }
-
-    }, [hashtag]);
+    };
 
     return (
         <MainContainer>

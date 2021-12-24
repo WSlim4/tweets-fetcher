@@ -1,18 +1,32 @@
 import styled, { css } from "styled-components";
-
+//padding: 45px 40px 45px 40px;
 const MainContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
 
-    padding: 45px 20px 45px 20px;
+    padding: 0px;
 
-    .handler-div {
-        margin-top: 25vh;
+    width: 100%;
+
+    .tweets-container {
+        width: 100%;
+
+        .handle-container {
+            display: flex;
+            align-items: center;
+            justify-content: center; 
+            margin-top: 25vh;
+        }
     }
 
     .container-wrapper {
-        width: 60%;
+        width: 100%;
+
+        @media(min-width: 1000px) {
+            width: 60%;
+        }
+        
         padding: 10px;
         border: 1px solid #1DA1F2;
         border-radius: 8px;

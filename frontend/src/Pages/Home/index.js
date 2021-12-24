@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { MainContainer, Container } from "./styles";
+import { useSelector, useDispatch } from 'react-redux'
+import { setTweets, decrement } from "../../Infraestrutura/Tweets/tweetSlice";
 import Typography from "@mui/material/Typography";
 import InputText from "../../Components/Input";
 import TweetCard from "../../Components/TweetCard";
@@ -7,9 +8,13 @@ import Pagination from "../../Components/Pagination";
 import TweetsService from "../../Services/TweetsService";
 import CircularProgress from '@mui/material/CircularProgress';
 import Retry from "../../Components/Retry";
+import { MainContainer, Container } from "./styles";
+import { ToastContainer } from 'react-toastify';
 
 export default function Home() {
-    const [tweets, setTweets] = useState([]);
+    const tweets = useSelector((state) => state.tweet.value)
+    const dispatch = useDispatch();
+
     const [hashtag, setHashtag] = useState("");
     const [current_page, setCurrentPage] = useState("default");
     const [next_page, setNextPage] = useState("");
@@ -27,7 +32,7 @@ export default function Home() {
                 return;
             }
 
-            setTweets([]);
+            dispatch(setTweets([]))
             setIsLoading(true);
             setHasError(false);
 
@@ -36,13 +41,13 @@ export default function Home() {
             if (response.data.next_token) {
                 setNextPage(response.data.next_token)
             } else {
-                setNextPage("none")
+                setNextPage("")
             }
 
             if (response.data.tweets) {
-                setTweets(response.data.tweets);
+                dispatch(setTweets(response.data.tweets));
             } else {
-                setTweets([]);
+                dispatch(setTweets([]));
             }
 
             setIsLoading(false);
@@ -70,9 +75,10 @@ export default function Home() {
                     />
                 </Container>
                 <Container middle>
-                    <div>
+                    <div className="tweets-container">
+
                         {isLoading === false && hasError === true && (
-                            <div className="handler-div">
+                            <div className="handle-container">
                                 <Retry retryFunc={fetchData} />
                             </div>
                         )}
@@ -81,17 +87,17 @@ export default function Home() {
                             hasError === false &&
                             tweets &&
                             tweets.length == 0 && (
-                                <div className="handler-div">
+                                <div className="handle-container">
                                     <Typography style={{ color: "#14171A" }}>Nenhum tweet disponível</Typography>
                                 </div>
                             )}
 
                         {isLoading === true && hasError === false && (
-                            <div className="handler-div">
+                            <div className="handle-container">
                                 <CircularProgress />
                             </div>
-
                         )}
+
                         {!!(isLoading === false &&
                             hasError === false &&
                             tweets &&
@@ -104,11 +110,10 @@ export default function Home() {
                                     username={tweet.user.username}
                                     datetime={tweet.created_at}
                                     tweets={tweets}
-                                    setTweets={setTweets}
+                                    setTweets={() => dispatch(decrement(i))}
                                     index={i}
                                 />
                             ))}
-
                     </div>
                 </Container>
                 <Container bottom>
@@ -123,6 +128,16 @@ export default function Home() {
                     />
                 </Container>
             </div>
+            <ToastContainer
+                position="bottom-center"
+                autoClose={2000}
+                progressStyle={{ color: "lightgreen" }}
+                toastStyle={{ backgroundColor: "lightgreen", color: "black" }}
+                hideProgressBar={true}
+                closeOnClick
+                rtl={false}
+                pauseOnHover={false}
+            />
         </MainContainer>
     )
 }

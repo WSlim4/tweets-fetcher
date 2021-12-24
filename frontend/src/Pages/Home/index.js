@@ -109,15 +109,14 @@ export default function Home() {
                                     img_url={tweet.user.profile_image_url}
                                     username={tweet.user.username}
                                     datetime={tweet.created_at}
-                                    tweets={tweets}
                                     setTweets={() => dispatch(decrement(i))}
-                                    index={i}
                                 />
                             ))}
                     </div>
                 </Container>
                 <Container default>
                     <Pagination
+                        hashtag={hashtag}
                         isLoading={isLoading}
                         hasError={hasError}
                         setPages={setPages}

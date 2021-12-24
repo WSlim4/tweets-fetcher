@@ -3,7 +3,7 @@ import React from "react";
 import IconButton from '@mui/material/IconButton';
 import { ArrowForwardIos, ArrowBackIos } from '@mui/icons-material';
 
-export default function Button({ isLoading, hasError, pages, setPages, current_page, next_page, setCurrentPage }) {
+export default function Button({ hashtag, isLoading, hasError, pages, setPages, current_page, next_page, setCurrentPage }) {
 
     const handlePageForward = () => {
         let _pages = [...pages];
@@ -23,12 +23,13 @@ export default function Button({ isLoading, hasError, pages, setPages, current_p
 
     return (
         <>
-            <IconButton onClick={() => handlePageBackward()} disabled={current_page === "default" || hasError || isLoading}>
+            <IconButton onClick={() => handlePageBackward()} disabled={current_page === "default" || hashtag === "" || hasError || isLoading}>
                 <ArrowBackIos />
             </IconButton>
             <IconButton
                 disabled={
                     next_page === "" ||
+                    hashtag === "" ||
                     hasError ||
                     isLoading
                 }

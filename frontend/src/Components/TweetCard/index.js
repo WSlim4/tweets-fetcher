@@ -6,7 +6,7 @@ import { Container } from "./styles";
 import IconButton from "@mui/material/IconButton";
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function TweetCard({ index, tweets, setTweets, username, text, img_url, datetime }) {
+export default function TweetCard({ setTweets, username, text, img_url, datetime }) {
 
     const handleTweet = (situation) => {
 

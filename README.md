@@ -11,3 +11,8 @@
 
 - Na pasta backend, utilize o comando **npm run dev**
 - Na pasta frontend, utilize o comando **yarn start**
+
+# Observações
+
+- O projeto utiliza a última versão do webpack, pode ser que seja necessário instalar essa dependência globalmente em casos de erro.
+

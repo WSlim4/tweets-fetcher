@@ -29,12 +29,6 @@ const Container = styled.div`
     display: flex;
     justify-content: flex-end;
 
-    ${props =>
-        props.bottom &&
-        css`
-        justify-content: space-between;
-    `};
-
     .twitter-logo-box {
         width: 8vh;
         height: 8vh;
@@ -45,6 +39,12 @@ const Container = styled.div`
             border-radius: 50%;
         }
     }
+
+    ${props =>
+        props.bottom &&
+        css`
+        justify-content: space-between;
+    `};
 
     ${props =>
         props.middle &&

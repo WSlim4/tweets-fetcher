@@ -26,7 +26,14 @@ export default function Button({ isLoading, hasError, pages, setPages, current_p
             <IconButton onClick={() => handlePageBackward()} disabled={current_page === "default" || hasError || isLoading}>
                 <ArrowBackIos />
             </IconButton>
-            <IconButton disabled={next_page === "none" || hasError || isLoading} onClick={() => handlePageForward()}>
+            <IconButton
+                disabled={
+                    next_page === "none" ||
+                    next_page === "" ||
+                    hasError ||
+                    isLoading
+                }
+                onClick={() => handlePageForward()}>
                 <ArrowForwardIos />
             </IconButton>
         </>

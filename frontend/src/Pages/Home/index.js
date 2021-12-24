@@ -10,15 +10,15 @@ import Retry from "../../Components/Retry";
 
 export default function Home() {
     const [tweets, setTweets] = useState([]);
-    const [hashtag, setHashtag] = useState("Porto");
+    const [hashtag, setHashtag] = useState("");
     const [current_page, setCurrentPage] = useState("default");
     const [next_page, setNextPage] = useState("");
     const [pages, setPages] = useState(["default"]);
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     const [hasError, setHasError] = useState(false);
 
-    useEffect(async () => {
-        await fetchData(current_page);
+    useEffect(() => {
+        fetchData(current_page);
     }, [current_page]);
 
     const fetchData = async (page) => {
@@ -58,7 +58,9 @@ export default function Home() {
             <div className="container-wrapper">
                 <Container bottom>
                     <div className="twitter-logo-box">
-                        <img src="https://t.ctcdn.com.br/uoFbikmqs4uzBJty4J99HwX-InM=/400x400/smart/i489929.jpeg" />
+                        <a href="https://twitter.com/explore/tabs/trending" target="_blank">
+                            <img src="https://t.ctcdn.com.br/uoFbikmqs4uzBJty4J99HwX-InM=/400x400/smart/i489929.jpeg" />
+                        </a>
                     </div>
 
                     <InputText

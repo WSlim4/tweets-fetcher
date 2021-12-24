@@ -14,5 +14,5 @@
 
 # Observações
 
-- O projeto utiliza a última versão do webpack, pode ser que seja necessário instalar essa dependência globalmente em casos de erro.
+- O projeto utiliza a última versão do **webpack**, pode ser que seja necessário instalar essa dependência globalmente em casos de erro.
 

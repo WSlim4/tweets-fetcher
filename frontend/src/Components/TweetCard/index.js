@@ -42,7 +42,10 @@ export default function TweetCard({ index, setTweets, username, text, img_url, d
                     <div className="button-group">
 
                         <IconButton onClick={() => handleSave()}>
-                            {savingTweet === true ? <CircularProgress size={23} /> : <Check style={{ color: "green" }} />}
+                            {savingTweet === true ?
+                                <CircularProgress size={23} /> :
+                                <Check style={{ color: "green" }} />
+                            }
 
                         </IconButton>
                         <IconButton onClick={() => setTweets(index, "reprovado")}>

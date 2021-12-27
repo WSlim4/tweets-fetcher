@@ -3,8 +3,13 @@ const { Schema } = mongoose;
 
 const TweetSchema = new Schema({
     text: String,
-    authorId: Number,
-    dataCriacao: { type: Date, default: Date.now }
+    dataCriacao: { type: Date, default: Date.now },
+    author: {
+        id: Number,
+        name: String,
+        username: String,
+        profileImage: String
+    }
 });
 
 const Tweet = mongoose.model('Tweet', TweetSchema);

@@ -1,4 +1,5 @@
 const express = require("express");
+const db_connection = require("./database/config");
 
 const PORT = 3333;
 
@@ -6,6 +7,7 @@ class App {
     constructor() {
         this.express = express();
 
+        this.database();
         this.cors();
         this.middlewares();
         this.routes();
@@ -13,6 +15,10 @@ class App {
         this.express.listen(PORT, () =>
             console.log(`Api rodando na porta ${PORT}`)
         );
+    }
+
+    database() {
+        db_connection();
     }
 
     cors() {

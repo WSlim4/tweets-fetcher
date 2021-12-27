@@ -1,5 +1,6 @@
 const needle = require("needle");
 const formatResponse = require("../helpers/format_response");
+const Tweet = require("../models/Tweet");
 
 const { API_TOKEN } = require("../common/environment");
 
@@ -42,6 +43,37 @@ class TweetsService {
             throw error;
         }
 
+    }
+
+    async save({ text, created_at, user }) {
+        try {
+            const tweet = new Tweet({
+                text,
+                dataCriacao: created_at,
+                author: {
+                    id: user.id,
+                    name: user.name,
+                    username: user.username,
+                    profileImage: user.profile_image_url
+                }
+            });
+
+            await tweet.save();
+
+            return tweet;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async findAll() {
+        try {
+            const tweets = await Tweet.find({});
+
+            return tweets;
+        } catch (error) {
+            throw error;
+        }
     }
 
 }

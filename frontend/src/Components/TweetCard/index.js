@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { useSelector } from 'react-redux'
 import { formatDatetime } from "../../Helpers/Utils";
 import { Check, Clear } from '@mui/icons-material';
-import { CircularProgress } from '@mui/material';
+import { CircularProgress, IconButton } from '@mui/material';
 import { Container } from "./styles";
-import TweetService from "../../Services/TweetsService";
-import IconButton from "@mui/material/IconButton";
 import 'react-toastify/dist/ReactToastify.css';
+
+import TweetService from "../../Services/TweetsService";
+
 
 export default function TweetCard({ index, setTweets, username, text, img_url, datetime }) {
 
